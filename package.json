@@ -1,10 +1,13 @@
 {
-  "name": "probot-stale",
-  "version": "1.1.0",
-  "description": "a GitHub App that closes abandoned issues after a period of inactivity",
-  "author": "Brandon Keepers",
+  "name": "probot-profanity",
+  "version": "0.1.0",
+  "description": "a GitHub App that marks and closes inappropriate issuess",
+  "author": "Nick Garlis",
   "license": "ISC",
-  "repository": "https://github.com/probot/stale",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickgarlis/probot-profanity.git"
+  },
   "scripts": {
     "start": "probot run ./index.js",
     "test": "jest && standard"
@@ -12,8 +15,9 @@
   "dependencies": {
     "joi": "^13.1.2",
     "probot": "^6.0.0",
-    "probot-scheduler": "^1.0.2",
-    "standard": "^10.0.3"
+    "probot-scheduler": "^1.0.3",
+    "standard": "^10.0.3",
+    "swearjar": "^0.2.0"
   },
   "engines": {
     "node": "^8.9",
@@ -27,5 +31,18 @@
     "env": [
       "jest"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/nickgarlis/probot-profanity/issues"
+  },
+  "homepage": "https://github.com/nickgarlis/probot-profanity#readme",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+    "profanity",
+    "inappropriate",
+    "bot"
+  ]
 }

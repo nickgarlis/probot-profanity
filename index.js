@@ -1,25 +1,22 @@
 const createScheduler = require('probot-scheduler')
-const Stale = require('./lib/stale')
+const swearjar = require('swearjar')
+const Profanity = require('./lib/profanity')
 
 module.exports = async robot => {
   // Visit all repositories to mark and sweep stale issues
   const scheduler = createScheduler(robot)
 
-  // Unmark stale issues if a user comments
   const events = [
-    'issue_comment',
-    'issues',
-    'pull_request',
-    'pull_request_review',
-    'pull_request_review_comment'
+    'issues.edited',
+    'pull_request.edited'
   ]
 
-  robot.on(events, unmark)
+  robot.on(events, unmark);
   robot.on('schedule.repository', markAndSweep)
 
   async function unmark (context) {
     if (!context.isBot) {
-      const stale = await forRepository(context)
+      const profanity = await forRepository(context)
       let issue = context.payload.issue || context.payload.pull_request
       const type = context.payload.issue ? 'issues' : 'pulls'
 
@@ -28,23 +25,28 @@ module.exports = async robot => {
         issue = (await context.github.issues.get(context.issue())).data
       }
 
-      const staleLabelAdded = context.payload.action === 'labeled' &&
-        context.payload.label.name === stale.config.staleLabel
+      const profanityLabelAdded = context.payload.action === 'labeled' &&
+        context.payload.label.name === profanity.config.profanityLabel
 
-      if (stale.hasStaleLabel(type, issue) && issue.state !== 'closed' && !staleLabelAdded) {
-        stale.unmark(type, issue)
+      if (profanity.hasProfanityLabel(type, issue) && issue.state !== 'closed' && !profanityLabelAdded) {
+        if (swearjar.profane(issue.title+' '+issue.body)){
+          return
+        }
+        else{
+          profanity.unmark(type, issue)
+        }  
       }
     }
   }
 
   async function markAndSweep (context) {
-    const stale = await forRepository(context)
-    await stale.markAndSweep('pulls')
-    await stale.markAndSweep('issues')
+    const profanity = await forRepository(context)
+    await profanity.markAndSweep('pulls')
+    await profanity.markAndSweep('issues')
   }
 
   async function forRepository (context) {
-    let config = await context.config('stale.yml')
+    let config = await context.config('profanity.yml')
 
     if (!config) {
       scheduler.stop(context.payload.repository)
@@ -54,6 +56,6 @@ module.exports = async robot => {
 
     config = Object.assign(config, context.repo({logger: robot.log}))
 
-    return new Stale(context.github, config)
+    return new Profanity(context.github, config)
   }
 }
