@@ -2,6 +2,8 @@
 
 > a GitHub App built with [Probot](https://github.com/probot/probot) that marks Issues and Pull Requests containing offensive content.
 
+![profanity-demo](https://s7.postimg.org/nfdhwoqhn/profanity-demo.png)
+
 Based on @bkeepers's [stale](https://github.com/probot/stale) bot.
 
 ## Usage
@@ -43,7 +45,7 @@ markComment: >
 
 # Comment to post when closing an inappropriate Issue or Pull Request.
 # closeComment: >
-#   Your comment here.
+#   Your comment here.  
 
 # Limit the number of actions per hour, from 1-30. Default is 30
 limitPerRun: 30
