@@ -1,5 +1,5 @@
 const createScheduler = require('probot-scheduler')
-const swearjar = require('swearjar')
+const Filter = require('bad-words')
 const Profanity = require('./lib/profanity')
 
 module.exports = async robot => {
@@ -16,6 +16,7 @@ module.exports = async robot => {
 
   async function unmark (context) {
     if (!context.isBot) {
+      const filter = new Filter()
       const profanity = await forRepository(context)
       let issue = context.payload.issue || context.payload.pull_request
       const type = context.payload.issue ? 'issues' : 'pulls'
@@ -29,7 +30,7 @@ module.exports = async robot => {
         context.payload.label.name === profanity.config.profanityLabel
 
       if (profanity.hasProfanityLabel(type, issue) && issue.state !== 'closed' && !profanityLabelAdded) {
-        if (swearjar.profane(issue.title+' '+issue.body)){
+        if (filter.isProfane(issue.title+' '+issue.body)){
           return
         }
         else{
@@ -49,7 +50,7 @@ module.exports = async robot => {
     let config = await context.config('profanity.yml')
 
     if (!config) {
-      scheduler.stop(context.payload.repository)
+      //scheduler.stop(context.payload.repository)
       // Don't actually perform for repository without a config
       config = {perform: false}
     }
