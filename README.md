@@ -8,7 +8,7 @@ Based on @bkeepers's [stale](https://github.com/probot/stale) bot.
 
 ## Usage
 
-1. **[Configure the GitHub App](https://github.com/apps/probot-profanity)**
+1. **[Configure the GitHub App](https://github.com/apps/profanity)**
 2. Create `.github/profanity.yml` based on the following template
 3. It will start scanning for offensive issues and/or pull requests within an hour.
 
