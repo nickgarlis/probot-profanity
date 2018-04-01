@@ -36,7 +36,7 @@ staleLabel: inappropriate
 # Comment to post when marking as stale. Set to `false` to disable
 markComment: >
   This issue has been automatically marked as inappropriate because
-  it contains forbidden words. It will be closed if no further edition
+  it contains forbidden words. It will be closed if no further edit
   occurs. Thank you for your contributions.
 
 # Comment to post when removing the inappropriate label.
@@ -58,7 +58,7 @@ limitPerRun: 30
 #   daysUntilStale: 30
 #   markComment: >
 #   This issue has been automatically marked as inappropriate because
-#   it contains forbidden words. It will be closed if no further edition
+#   it contains forbidden words. It will be closed if no further edit
 #   occurs. Thank you for your contributions.
 
 # issues:
