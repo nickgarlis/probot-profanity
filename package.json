@@ -1,6 +1,6 @@
 {
   "name": "probot-profanity",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "a GitHub App that marks and closes inappropriate issuess",
   "author": "Nick Garlis",
   "license": "ISC",
