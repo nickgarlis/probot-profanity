@@ -1,8 +1,9 @@
 # Probot: Profanity
 
-> a GitHub App built with [Probot](https://github.com/probot/probot) that marks Issues and Pull Requests containing offensive content.
+> a GitHub App built with [Probot](https://github.com/probot/probot) that marks/censors Issues and Pull Requests containing offensive content.
 
-![profanity-demo](https://s7.postimg.org/nfdhwoqhn/profanity-demo.png)
+![mark-demo](https://i.imgur.com/UMRGX2E.png)
+![censor-demo](https://i.imgur.com/crmN6AG.png)
 
 Based on @bkeepers's [stale](https://github.com/probot/stale) bot.
 
@@ -16,6 +17,12 @@ A `.github/profanity.yml` file is required to enable the plugin. The file can be
 
 ```yml
 # Configuration for probot-profanity - https://github.com/nickgarlis/probot-profanity
+
+# Set to true to censor issues (defaults to false)
+censor: false
+
+# Placeholder to replace the letters of a forbidden word 
+placeholder: '*'
 
 # Number of days of inactivity before an inappropriate Issue or Pull Request is closed.
 # Set to false to disable. If disabled, issues still need to be closed manually, but will remain marked as inappropriate.
