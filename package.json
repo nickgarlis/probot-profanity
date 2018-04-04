@@ -13,7 +13,7 @@
     "test": "jest && standard"
   },
   "dependencies": {
-    "bad-words": "^1.6.1",
+    "bad-words-relaxed": "^1.6.5",
     "joi": "^13.1.2",
     "probot": "^6.0.0",
     "probot-scheduler": "^1.0.3",

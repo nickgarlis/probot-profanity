@@ -1,5 +1,5 @@
 const createScheduler = require('probot-scheduler')
-const Filter = require('bad-words')
+const Filter = require('bad-words-relaxed')
 const Profanity = require('./lib/profanity')
 
 module.exports = async robot => {
@@ -50,7 +50,7 @@ module.exports = async robot => {
     let config = await context.config('profanity.yml')
 
     if (!config) {
-      //scheduler.stop(context.payload.repository)
+      scheduler.stop(context.payload.repository)
       // Don't actually perform for repository without a config
       config = {perform: false}
     }
