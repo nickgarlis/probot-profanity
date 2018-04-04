@@ -2,8 +2,8 @@
 
 > a GitHub App built with [Probot](https://github.com/probot/probot) that marks/censors Issues and Pull Requests containing offensive content.
 
-![mark-demo](https://i.imgur.com/UMRGX2E.png)
-![censor-demo](https://i.imgur.com/crmN6AG.png)
+![mark-demo](https://user-images.githubusercontent.com/25513006/38316149-bc43b3c0-3832-11e8-8b13-53216b342027.png)
+![censor-demo](https://user-images.githubusercontent.com/25513006/38316166-c48f9eb8-3832-11e8-95a3-78773c7120a4.png)
 
 Based on @bkeepers's [stale](https://github.com/probot/stale) bot.
 
