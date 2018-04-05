@@ -11,7 +11,7 @@ module.exports = async robot => {
     'pull_request.edited'
   ]
 
-  robot.on(events, unmark);
+  robot.on(events, unmark)
   robot.on('schedule.repository', markAndSweep)
 
   async function unmark (context) {
@@ -30,12 +30,9 @@ module.exports = async robot => {
         context.payload.label.name === profanity.config.profanityLabel
 
       if (profanity.hasProfanityLabel(type, issue) && issue.state !== 'closed' && !profanityLabelAdded) {
-        if (filter.isProfane(issue.title+' '+issue.body)){
-          return
-        }
-        else{
+        if (!filter.isProfane(issue.title + ' ' + issue.body)) {
           profanity.unmark(type, issue)
-        }  
+        }
       }
     }
   }
