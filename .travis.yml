@@ -4,3 +4,6 @@ node_js:
   - 8
 notifications:
   disabled: true
+cache: npm
+script: npm run deploy
+after_script: npm run alias
