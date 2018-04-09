@@ -10,11 +10,14 @@
   },
   "scripts": {
     "start": "probot run ./index.js",
-    "test": "jest && standard"
+    "test": "jest && standard",
+    "deploy": "now -e NODE_ENV=production -e APP_ID=$APP_ID -e WEBHOOK_SECRET=$WEBHOOK_SECRET -e PRIVATE_KEY=\"$PRIVATE_KEY\" --token $NOW_TOKEN --npm --public",
+    "alias": "now alias --token=$NOW_TOKEN"
   },
   "dependencies": {
     "bad-words-relaxed": "^1.6.5",
     "joi": "^13.1.2",
+    "now": "^11.0.6",
     "probot": "^6.0.0",
     "probot-scheduler": "^1.0.3",
     "standard": "^10.0.3"
@@ -44,5 +47,15 @@
     "profanity",
     "inappropriate",
     "bot"
-  ]
+  ],
+  "now": {
+    "name": "probot-profanity",
+    "alias": "probot-profanity.now.sh",
+    "scale": {
+      "sfo1": {
+        "min": 1,
+        "max": 1
+      }
+    }
+  }
 }
