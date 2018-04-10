@@ -6,4 +6,3 @@ notifications:
   disabled: true
 cache: npm
 script: npm run deploy
-after_script: npm run alias
