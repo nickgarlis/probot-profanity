@@ -1,5 +1,5 @@
 const createScheduler = require('probot-scheduler')
-const Filter = require('bad-words-relaxed')
+const Filter = require('./lib/filter')
 const Profanity = require('./lib/profanity')
 
 module.exports = async robot => {
