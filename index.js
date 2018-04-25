@@ -1,5 +1,4 @@
 const createScheduler = require('probot-scheduler')
-const Filter = require('./lib/filter')
 const Profanity = require('./lib/profanity')
 
 module.exports = async robot => {
@@ -16,8 +15,8 @@ module.exports = async robot => {
 
   async function unmark (context) {
     if (!context.isBot) {
-      const filter = new Filter()
       const profanity = await forRepository(context)
+      const filter = profanity.filter
       let issue = context.payload.issue || context.payload.pull_request
       const type = context.payload.issue ? 'issues' : 'pulls'
 
