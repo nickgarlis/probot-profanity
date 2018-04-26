@@ -50,7 +50,7 @@ describe('profanity', () => {
 
       for (const type of ['pulls', 'issues']) {
         try {
-          await profanity.censor(type, {number: 123, title: 'some title', body: 'fuck'})
+          await profanity.censor(type, {number: 123, title: 'some title', body: 'fuck'}, [{id: 123, body: 'fuck'}])
         } catch (_) {
           throw new Error('Should not have thrown an error')
         }
