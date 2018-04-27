@@ -50,11 +50,28 @@ describe('profanity', () => {
 
       for (const type of ['pulls', 'issues']) {
         try {
-          await profanity.censor(type, {number: 123, title: 'some title', body: 'fuck'}, [{id: 123, body: 'fuck'}])
+          const issue = {number: 123, title: 'some title', body: 'fuck'}
+          const comments = [{id: 123, body: 'fuck'}]
+          await profanity.censor(type, issue, comments)
         } catch (_) {
           throw new Error('Should not have thrown an error')
         }
       }
+    }
+  )
+
+  test(
+    'Cleans profane words and escapes markdown when necessary',
+    function () {
+      let profanity = new Profanity(github, {perform: true, owner: 'nickgarlis', repo: 'profanity', logger: robot.log})
+
+      const issue = {number: 123, title: 'fuck', body: 'fuck'}
+      const comments = [{id: 123, body: 'fuck'}]
+      const profane = profanity.getProfanity(issue, comments)
+
+      expect(profane.title).toEqual('****')
+      expect(profane.body).toEqual('\\****')
+      expect(profane.comments[123]).toEqual('\\****')
     }
   )
 
