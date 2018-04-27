@@ -1,7 +1,7 @@
 const exec = require('child_process').exec
-const package = require('./package')
+const pkg = require('./package')
 
-const app = package.now["name"]
+const app = pkg.now['name']
 const push = 'now -e NODE_ENV=production -e APP_ID=$APP_ID -e WEBHOOK_SECRET=$WEBHOOK_SECRET -e PRIVATE_KEY="$PRIVATE_KEY" --token $NOW_TOKEN --npm --public'
 const alias = 'now alias --token=$NOW_TOKEN'
 const remove = `now rm ${app} --token=$NOW_TOKEN --safe -y`
