@@ -24,6 +24,9 @@ censor: false
 # Placeholder to replace the letters of a forbidden word 
 placeholder: '*'
 
+# A list of extra forbidden words. Set to `[]` to disable
+extraWords: []
+
 # Number of days of inactivity before an inappropriate Issue or Pull Request is closed.
 # Set to false to disable. If disabled, issues still need to be closed manually, but will remain marked as inappropriate.
 daysUntilClose: 2
