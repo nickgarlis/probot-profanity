@@ -4,6 +4,10 @@ const validConfigs = [
   [{censor: true}],
   [{censor: false}],
   [{placeholder: '*'}],
+  [{extraWords: ['duck']}],
+  [{extraWords: 'duck'}, {extraWords: ['duck']}],
+  [{extraWords: null}],
+  [{extraWords: []}],
   [{daysUntilClose: false}],
   [{daysUntilClose: 1}],
   [{exemptLabels: ['foo']}],
@@ -59,6 +63,7 @@ describe('schema', () => {
     expect(schema.validate({}).value).toEqual({
       censor: false,
       placeholder: '*',
+      extraWords: [],
       daysUntilClose: 2,
       exemptLabels: [],
       exemptProjects: false,
