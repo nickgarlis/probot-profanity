@@ -19,6 +19,7 @@
     "joi": "^13.1.2",
     "now": "^11.0.6",
     "probot": "^6.0.0",
+    "probot-config": "^0.1.0",
     "probot-scheduler": "^1.0.3",
     "standard": "^10.0.3"
   },

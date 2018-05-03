@@ -1,3 +1,4 @@
+const getConfig = require('probot-config')
 const createScheduler = require('probot-scheduler')
 const Profanity = require('./lib/profanity')
 
@@ -43,7 +44,7 @@ module.exports = async robot => {
   }
 
   async function forRepository (context) {
-    let config = await context.config('profanity.yml')
+    let config = await getConfig(context, 'profanity.yml')
 
     if (!config) {
       scheduler.stop(context.payload.repository)
