@@ -3,16 +3,42 @@ const createScheduler = require('probot-scheduler')
 const Profanity = require('./lib/profanity')
 
 module.exports = async robot => {
-  // Visit all repositories to mark and sweep stale issues
   const scheduler = createScheduler(robot)
 
-  const events = [
+  const targetEvents = [
+    'issues.opened',
     'issues.edited',
+    'issue_comment.created',
+    'issue_comment.edited',
+    'pull_request.opened',
     'pull_request.edited'
   ]
 
-  robot.on(events, unmark)
+  const unmarkEvents = [
+    'issues.edited',
+    'issue_comment.edited',
+    'pull_request.edited'
+  ]
+
+  robot.on(targetEvents, targetIssue)
+  robot.on(unmarkEvents, unmark)
   robot.on('schedule.repository', markAndSweep)
+
+  async function targetIssue (context) {
+    if (!context.isBot) {
+      const profanity = await forRepository(context)
+      const issue = context.payload.issue || context.payload.pull_request
+      const comments = context.payload.comment ? [context.payload.comment] : null
+      const type = context.payload.issue ? 'issues' : 'pulls'
+
+      await profanity.ensureProfanityLabelExists(type)
+
+      // allow an action take place
+      profanity.remainingActions++
+
+      profanity.targetIssue(type, issue, comments)
+    }
+  }
 
   async function unmark (context) {
     if (!context.isBot) {
@@ -26,10 +52,7 @@ module.exports = async robot => {
         issue = (await context.github.issues.get(context.issue())).data
       }
 
-      const profanityLabelAdded = context.payload.action === 'labeled' &&
-        context.payload.label.name === profanity.config.profanityLabel
-
-      if (profanity.hasProfanityLabel(type, issue) && issue.state !== 'closed' && !profanityLabelAdded) {
+      if (profanity.hasProfanityLabel(type, issue) && issue.state !== 'closed') {
         if (!filter.isProfane(issue.title + ' ' + issue.body)) {
           profanity.unmark(type, issue)
         }
