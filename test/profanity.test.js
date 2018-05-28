@@ -71,7 +71,7 @@ describe('profanity', () => {
 
       expect(profane.title).toEqual('****')
       expect(profane.body).toEqual('\\****')
-      expect(profane.comments[123]).toEqual('\\****')
+      expect(profane.comments[0].body).toEqual('\\****')
     }
   )
 
