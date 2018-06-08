@@ -18,6 +18,10 @@ A `.github/profanity.yml` file is required to enable the plugin. The file can be
 ```yml
 # Configuration for probot-profanity - https://github.com/nickgarlis/probot-profanity
 
+# Language to detect profanity in. 
+# Choose one of the following: 'en'
+language: 'en'
+
 # Set to true to censor issues (defaults to false)
 censor: false
 

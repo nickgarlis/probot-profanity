@@ -1,6 +1,7 @@
 const schema = require('../lib/schema')
 
 const validConfigs = [
+  [{language: 'en'}],
   [{censor: true}],
   [{censor: false}],
   [{placeholder: '*'}],
@@ -41,6 +42,7 @@ const validConfigs = [
 ]
 
 const invalidConfigs = [
+  [{language: 'bananas'}, 'must be one of [en]'],
   [{censor: 'nope'}, 'must be a boolean'],
   [{placeholder: ''}, 'not allowed to be empty'],
   [{placeholder: false}, 'must be a string'],
@@ -68,6 +70,7 @@ const invalidConfigs = [
 describe('schema', () => {
   test('defaults', async () => {
     expect(schema.validate({}).value).toEqual({
+      language: 'en',
       censor: false,
       placeholder: '*',
       extraWords: [],
