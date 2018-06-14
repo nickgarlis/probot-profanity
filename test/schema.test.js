@@ -42,7 +42,7 @@ const validConfigs = [
 ]
 
 const invalidConfigs = [
-  [{language: 'bananas'}, 'must be one of [en]'],
+  [{language: 'bananas'}, 'must be one of [en, es]'],
   [{censor: 'nope'}, 'must be a boolean'],
   [{placeholder: ''}, 'not allowed to be empty'],
   [{placeholder: false}, 'must be a string'],
