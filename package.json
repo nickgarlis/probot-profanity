@@ -1,6 +1,6 @@
 {
   "name": "probot-profanity",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "a GitHub App that marks/censors Issues and Pull Requests containing offensive content.",
   "author": "Nick Garlis",
   "license": "ISC",
