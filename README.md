@@ -9,29 +9,29 @@ Based on @bkeepers's [stale](https://github.com/probot/stale) bot.
 
 ## Usage
 
-1. **[Configure the GitHub App](https://github.com/apps/profanity)**
-2. Create `.github/profanity.yml` based on the following template
-3. It will start scanning for offensive issues and/or pull requests within an hour and automatically censor/mark any new ones.
+1.  **[Configure the GitHub App](https://github.com/apps/profanity)**
+2.  Create `.github/profanity.yml` based on the following template
+3.  It will start scanning for offensive issues and/or pull requests within an hour and automatically censor/mark any new ones.
 
 A `.github/profanity.yml` file is required to enable the plugin. The file can be empty, or it can override any of these default settings:
 
 ```yml
 # Configuration for probot-profanity - https://github.com/nickgarlis/probot-profanity
 
-# Language to detect profanity in. 
-# Choose one of the following: 'en', 'es'
+# Language to detect profanity in.
+# Choose one of the following: 'de', en', 'es', 'fr', 'it', 'nl', 'pt', 'ru'
 language: 'en'
 
 # Set to true to censor issues (defaults to false)
 censor: false
 
-# Placeholder to replace the letters of a forbidden word 
+# Placeholder to replace the letters of a forbidden word
 placeholder: '*'
 
 # A list of extra forbidden words. Set to `[]` to disable
 extraWords: []
 
-# A list of forbidden words to be ignored. Set to `[]` to disable 
+# A list of forbidden words to be ignored. Set to `[]` to disable
 exemptWords: []
 
 # Number of days of inactivity before an inappropriate Issue or Pull Request is closed.
