@@ -15,10 +15,9 @@
   },
   "dependencies": {
     "bad-words-relaxed": "github:Jared-Sprague/bad-words-relaxed",
-    "child_process": "^1.0.2",
     "joi": "^13.3.0",
     "now": "^11.2.1",
-    "probot": "^6.2.0",
+    "probot": "^6.2.1",
     "probot-config": "^0.1.0",
     "probot-scheduler": "^1.0.3",
     "standard": "^10.0.3"
