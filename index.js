@@ -67,7 +67,7 @@ module.exports = async robot => {
   }
 
   async function forRepository (context) {
-    let config = await getConfig(context, 'profanity.yml')
+    let config = await getConfig(context, 'profanity.yml', null)
 
     if (!config) {
       scheduler.stop(context.payload.repository)

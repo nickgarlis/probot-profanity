@@ -4,6 +4,8 @@ const validConfigs = [
   [{language: 'en'}],
   [{censor: true}],
   [{censor: false}],
+  [{dictionaries: ['profanity']}],
+  [{dictionaries: ['racist', 'profanity']}],
   [{placeholder: '*'}],
   [{extraWords: ['duck']}],
   [{extraWords: 'duck'}, {extraWords: ['duck']}],
@@ -44,6 +46,8 @@ const validConfigs = [
 const invalidConfigs = [
   [{language: 'bananas'}, 'must be one of [de, en, es, fr, it, nl, pt, ru]'],
   [{censor: 'nope'}, 'must be a boolean'],
+  [{dictionaries: ['fake']}, 'must be one of [profanity, racist]'],
+  [{dictionaries: []}, 'must contain at least 1 items'],
   [{placeholder: ''}, 'not allowed to be empty'],
   [{placeholder: false}, 'must be a string'],
   [{placeholder: ['a', 'b']}, 'must be a string'],
@@ -72,6 +76,7 @@ describe('schema', () => {
     expect(schema.validate({}).value).toEqual({
       language: 'en',
       censor: false,
+      dictionaries: ['profanity', 'racist'],
       placeholder: '*',
       extraWords: [],
       exemptWords: [],
