@@ -6,9 +6,3 @@ notifications:
   disabled: true
 script: 
  - npm run test
-
-deploy:
-  provider: script
-  script: node deploy.js
-  on:
-    branch: master
