@@ -6,4 +6,3 @@ notifications:
   disabled: true
 script: 
  - npm run test
- - npm run deploy
