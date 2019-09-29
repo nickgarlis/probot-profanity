@@ -47,15 +47,5 @@
     "profanity",
     "inappropriate",
     "bot"
-  ],
-  "now": {
-    "name": "probot-profanity",
-    "alias": "probot-profanity.now.sh",
-    "scale": {
-      "sfo1": {
-        "min": 1,
-        "max": 1
-      }
-    }
-  }
+  ]
 }
