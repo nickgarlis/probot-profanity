@@ -11,12 +11,13 @@
   "scripts": {
     "start": "probot run ./index.js",
     "test": "jest && standard",
+    "build": "echo $NODE_ENV",
     "deploy": "node ./deploy.js"
   },
   "dependencies": {
     "bad-words-relaxed": "github:Jared-Sprague/bad-words-relaxed",
     "joi": "^13.3.0",
-    "now": "^11.2.1",
+    "now": "^16.3.1",
     "probot": "^6.2.1",
     "probot-config": "^0.1.0",
     "probot-scheduler": "^1.0.3",
@@ -47,15 +48,5 @@
     "profanity",
     "inappropriate",
     "bot"
-  ],
-  "now": {
-    "name": "probot-profanity",
-    "alias": "probot-profanity.now.sh",
-    "scale": {
-      "sfo1": {
-        "min": 1,
-        "max": 1
-      }
-    }
-  }
+  ]
 }
